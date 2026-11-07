@@ -9,12 +9,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Locale;
 
+/**
+ * Filters selected rows after Minecraft has populated the Controls list.
+ * This only changes the visible list; registered keybindings remain untouched.
+ */
 @Mixin(ControlsListWidget.class)
 public abstract class ControlsListWidgetMixin {
-    @Inject(method = "update", at = @At("TAIL"))
+
+    @Inject(method = "<init>", at = @At("TAIL"))
     private void animatium$hideSelectedRows(CallbackInfo ci) {
-        // children() is inherited from EntryListWidget. Do not @Shadow it here:
-        // Mixin cannot shadow an inherited method as if it were declared on this class.
         ControlsListWidget self = (ControlsListWidget) (Object) this;
 
         self.children().removeIf(entry -> {
@@ -28,7 +31,6 @@ public abstract class ControlsListWidgetMixin {
             String id = binding.getId().toLowerCase(Locale.ROOT);
 
             return id.contains("macecore")
-                    || id.contains("mace_core")
                     || id.equals("key.shieldbreaker.open_gui");
         });
     }
