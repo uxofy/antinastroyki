@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "animatium",
+  "version": "${version}",
+  "name": "Animatium",
+  "description": "Hides selected third-party keybinding rows from the Controls menu.",
+  "authors": ["Animatium"],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["ru.animatium.AnimatiumClient"]
+  },
+  "mixins": ["animatium.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.18.1",
+    "minecraft": "1.21.11",
+    "java": ">=21"
+  }
+}

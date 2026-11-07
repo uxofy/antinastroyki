@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "package": "ru.animatium.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "client": [
+    "ControlsListWidgetMixin",
+    "KeyBindingEntryAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
